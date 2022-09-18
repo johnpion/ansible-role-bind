@@ -1,0 +1,12 @@
+options {
+        directory "/var/cache/bind";
+
+        forwarders { {{ bind_forwarders }} };
+
+        listen-on { {{ bind_listen_on }} };
+        dnssec-validation {{ bind_dnssec_validation }};
+        recursion yes;
+        allow-recursion { {{ bind_recursion_allow }} };
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};

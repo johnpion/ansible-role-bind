@@ -1,0 +1,2 @@
+- include: install.yml
+  when: bind_enabled == true

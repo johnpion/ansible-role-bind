@@ -1,0 +1,19 @@
+- name: chown bind files
+  file:
+    owner: bind
+    group: bind
+    path: /etc/bind
+    recurse: yes
+  listen: chown bind
+
+- name: chown bind path
+  file:
+    owner: bind
+    group: bind
+    mode: 750
+    path: /etc/bind
+  listen: chown bind
+
+- name: restart bind
+  service: name=bind9 state=restarted
+  tags: bind_restart

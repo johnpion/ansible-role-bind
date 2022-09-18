@@ -1,0 +1,5 @@
+bind_forwarders: "8.8.8.8; 8.8.4.4;"
+bind_listen_on: "any;"
+bind_recursion_allow: "any;"
+bind_enabled: false
+bind_dnssec_validation: "auto"
