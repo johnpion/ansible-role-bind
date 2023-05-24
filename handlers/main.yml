@@ -1,19 +1,22 @@
-- name: chown bind files
-  file:
+- name: Chown bind files
+  ansible.builtin.file:
+    path: /etc/bind
     owner: bind
     group: bind
-    path: /etc/bind
-    recurse: yes
-  listen: chown bind
+    recurse: true
+  listen: Chown bind
 
-- name: chown bind path
-  file:
+- name: Chown bind path
+  ansible.builtin.file:
+    path: /etc/bind
     owner: bind
     group: bind
-    mode: 750
-    path: /etc/bind
-  listen: chown bind
+    mode: '0750'
+  listen: Chown bind
 
-- name: restart bind
-  service: name=bind9 state=restarted
-  tags: bind_restart
+- name: Restart bind
+  ansible.builtin.service:
+    name: bind9
+    state: restarted
+  tags:
+    - bind_restart

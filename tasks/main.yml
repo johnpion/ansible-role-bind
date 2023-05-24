@@ -1,2 +1,3 @@
-- include: install.yml
-  when: bind_enabled == true
+- name: Install
+  ansible.builtin.include_tasks: install.yml
+  when: bind_enabled | true
