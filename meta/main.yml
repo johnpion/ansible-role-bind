@@ -1,7 +1,7 @@
 galaxy_info:
   author: Ivan Serohin
   license: license Apache-2.0
-  role_name: cloudflare_dns
+  role_name: bind
   namespace: johnpion
   description: ansible role 'bind'
   min_ansible_version: '2.14'
