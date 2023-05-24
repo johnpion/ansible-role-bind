@@ -1,23 +1,26 @@
-- name: apt install bind9
-  apt:
-    pkg: ['bind9', 'rsync']
-    update_cache: yes
+- name: Apt install bind9
+  ansible.builtin.apt:
+    name:
+      - bind9
+      - rsync
+    update_cache: true
 
-- name: copy template of bind9
-  template:
-    src: "{{item}}.j2"
-    dest: "/etc/bind/{{item}}"
+- name: Copy template of bind9
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "/etc/bind/{{ item }}"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   with_items:
     - "named.conf.options"
 
-- name: synchronize configs of bing
-  synchronize:
-    src: files/{{ inventory_hostname }}/bind
-    dest: /etc/
+- name: Synchronize configs of bind
+  ansible.posix.synchronize:
+    src: "files/{{ inventory_hostname }}/bind"
+    dest: "/etc/"
   notify:
-    - chown bind
-    - restart bind
-  tags: bind_config
+    - Chown bind
+    - Restart bind
+  tags:
+    - bind_config
