@@ -1,2 +1,0 @@
-REQUERE:
-{{ named.conf.local }}
